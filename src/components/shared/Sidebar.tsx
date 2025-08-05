@@ -18,7 +18,11 @@ export default function Sidebar() {
   const location = useLocation();
 
   // Helper for rendering links
-  const renderLink = (label: string, path: string, Icon: unknown) => {
+  const renderLink = (
+    label: string,
+    path: string,
+    Icon: React.ComponentType<{ className?: string }>
+  ) => {
     const isActive = location.pathname.startsWith(path);
     return (
       <Link
@@ -35,6 +39,7 @@ export default function Sidebar() {
       </Link>
     );
   };
+
 
   const [openRegistration, setOpenRegistration] = useState(false);
   // const toggleRegistration = () => setOpenRegistration(!openRegistration);
@@ -105,18 +110,18 @@ export default function Sidebar() {
         )}
       </div>
 
-      {/* Financials */}
+      {/* Financial */}
       <div className="mb-4">
         <h2 className="text-sm font-bold uppercase px-4 mb-1 text-gray-300">
-          Financials
+          Financial
         </h2>
-        {renderLink('Fee Statement', '/dashboard/financials/statement', Wallet)}
+        {renderLink('Fee Statement', '/dashboard/financial/statement', Wallet)}
         {renderLink(
           'Accommodation Statement',
-          '/dashboard/financials/accommodation',
+          '/dashboard/financial/accommodation',
           BedDouble
         )}
-        {renderLink('Receipts', '/dashboard/financials/receipts', Receipt)}
+        {renderLink('Receipts', '/dashboard/financial/receipts', Receipt)}
       </div>
 
       {/* Accommodation */}
